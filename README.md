@@ -68,21 +68,31 @@ wikijs-dco-analytics/
 #### Option 0: Docker Deployment (Recommended for Quick Setup)
 1. **Prerequisites**: Install Docker and Docker Compose on your system
 2. **Clone Repository**: Clone this repository to your local system
-3. **Configure Permissions**: Ensure the data directory has proper ownership:
+3. **Configure Environment**: Create a `.env` file in the repository root with your custom settings:
+   ```bash
+   # Copy the template and customize
+   cp env.template .env
+   # Edit the .env file with your preferred settings
+   nano .env
+   ```
+   
+   The template includes all available configuration options with sensible defaults.
+4. **Configure Data Directory**: Create and configure the data directory:
    ```bash
    # Create data directory and set proper ownership
-   sudo mkdir -p /home/test/prod/data
-   sudo chown -R 1000:1000 /home/test/prod/data
+   mkdir -p ./wiki-data
+   # Set ownership to match your user (replace 1000:1000 with your UID:GID)
+   sudo chown -R $(id -u):$(id -g) ./wiki-data
    ```
-4. **Deploy with Docker Compose**: 
+5. **Deploy with Docker Compose**: 
    ```bash
    docker-compose up -d
    ```
-5. **Access Wiki.js**: Navigate to `http://localhost` in your browser
-6. **Set Homepage**: When creating the homepage, choose "Choose from template" and navigate to `home/` to select `index.md` as the homepage template
-7. **Configure Git Sync**: Set up Git Sync to point to this repository for content synchronization
+6. **Access Wiki.js**: Navigate to `http://localhost` (or your configured port) in your browser
+7. **Set Homepage**: When creating the homepage, choose "Choose from template" and navigate to `home/` to select `index.md` as the homepage template
+8. **Configure Git Sync**: Set up Git Sync to point to this repository for content synchronization
 
-> **Important**: The `/data` folder created by Docker may be owned by `root:root`. You'll need to change ownership to the user managing the Wiki.js instance (typically UID 1000) to avoid permission issues when Wiki.js tries to create necessary directories.
+> **Important**: The data folder created by Docker may have permission issues. You'll need to ensure the ownership matches your user configuration (USER_ID:GROUP_ID) to avoid permission issues when Wiki.js tries to create necessary directories.
 
 ### Docker Compose Configuration
 
@@ -91,11 +101,26 @@ The included `docker-compose.yml` file provides a complete Wiki.js deployment wi
 - **PostgreSQL Database**: Pre-configured PostgreSQL 16 instance with health checks
 - **Wiki.js Application**: Latest Wiki.js v2 with proper database connectivity
 - **Volume Management**: Persistent data storage for both database and Wiki.js
-- **User Permissions**: Configured to run as UID 1000 to avoid permission issues
-- **Timezone Support**: Configured for America/New_York timezone
-- **Port Mapping**: Wiki.js accessible on port 80 (localhost)
+- **User Permissions**: Configurable user permissions via environment variables
+- **Timezone Support**: Configurable timezone (defaults to America/New_York)
+- **Port Mapping**: Configurable port mapping (defaults to port 80)
 
-The configuration includes proper health checks to ensure the database is ready before Wiki.js starts, and all necessary environment variables for seamless connectivity.
+The configuration includes proper health checks to ensure the database is ready before Wiki.js starts, and all necessary environment variables for seamless connectivity. All paths, usernames, and configurations can be customized via environment variables or a `.env` file.
+
+### Environment Configuration
+
+The Docker Compose setup supports the following environment variables:
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `POSTGRES_DB` | `wiki` | PostgreSQL database name |
+| `POSTGRES_USER` | `wikijs` | PostgreSQL username |
+| `POSTGRES_PASSWORD` | `wikijs` | PostgreSQL password |
+| `WIKI_PORT` | `80` | Port for Wiki.js web interface |
+| `WIKI_DATA_PATH` | `./wiki-data` | Local path for Wiki.js data |
+| `USER_ID` | `1000` | User ID for container permissions |
+| `GROUP_ID` | `1000` | Group ID for container permissions |
+| `TZ` | `America/New_York` | Timezone configuration |
 
 #### Option 1: Git Sync (Recommended for Collaborative Editing)
 1. **Install Wiki.js** on your server

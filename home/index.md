@@ -96,6 +96,28 @@ Comprehensive reference documentation:
 - **MITRE ATT&CK** - Threat modeling framework
 - **MISP** - Threat intelligence sharing
 
+## 🎯 MITRE ATT&CK Integration
+
+### Offline MITRE Tools
+This repository is integrated with offline MITRE ATT&CK tools for air-gapped environments:
+
+- **[MITRE ATT&CK Website](http://localhost:3001)** - Complete offline browsing of all matrices, tactics, techniques, and mitigations
+- **[ATT&CK Navigator](http://localhost:4200)** - Interactive matrix navigation and annotation
+- **[ATT&CK Flow](http://localhost:3002)** - Attack sequence visualization and flow analysis
+
+### Cross-Repository Navigation
+- **From Analytics to CTI** - Direct links from detection rules to MITRE techniques
+- **From CTI to Analytics** - Navigate from MITRE content to relevant analytics
+- **Mission Planning** - Integration between hunt playbooks and ATT&CK Navigator
+
+### Quick Access Links
+- **[Enterprise ATT&CK Matrix](http://localhost:3001/matrices/enterprise/)** - Complete enterprise attack matrix
+- **[ICS ATT&CK Matrix](http://localhost:3001/matrices/ics/)** - Industrial control systems matrix
+- **[Mobile ATT&CK Matrix](http://localhost:3001/matrices/mobile/)** - Mobile attack matrix
+- **[Techniques](http://localhost:3001/techniques/)** - Browse all ATT&CK techniques
+- **[Groups](http://localhost:3001/groups/)** - Threat actor groups
+- **[Software](http://localhost:3001/software/)** - Attack tools and software
+
 ## 📈 Getting Started
 
 ### 1. Choose Your Target
