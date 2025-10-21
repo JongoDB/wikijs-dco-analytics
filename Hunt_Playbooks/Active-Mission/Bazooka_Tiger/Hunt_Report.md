@@ -188,9 +188,9 @@ Get-Service -Name "SearchIndexer" | Where-Object {$_.Path -like "*ProgramData\Mi
 
 ## Related Documentation
 
-- [BT Suricata Rules](../../Detections/Network/BT_Suricata_Rules.md)
-- [BT Windows Host Detections](../../Detections/Host/Windows/BT_Windows_Host_Detections.md)
-- [BT Generic Reference](../../Reference/BT_Generic_Reference.md)
+- [BT Suricata Rules](../../../Detections/Network/BT_Suricata_Rules.md)
+- [BT Windows Host Detections](../../../Detections/Host/Windows/Barker_Windows_Host_Detections.md)
+- [BT Generic Reference](../../../Reference/BT_Generic_Reference.md)
 
 ## References
 

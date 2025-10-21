@@ -34,16 +34,16 @@ Shotgun Tiger has been observed conducting sophisticated cyber operations target
 ## Related Detections
 
 ### Network Detections
-- [ST Suricata Rules](../../Detections/Network/ST_Suricata_Rules.md)
-- [ST Network Anomaly Detection](../../Detections/Network/ST_Suricata_Rules.md)
+- [ST Suricata Rules](../../../Detections/Network/ST_Suricata_Rules.md)
+- [ST Network Anomaly Detection](../../../Detections/Network/ST_Suricata_Rules.md)
 
 ### Host Detections
-- [ST Windows Host Detections](../../Detections/Host/Windows/ST_Windows_Host_Detections.md)
-- [ST Process Monitoring](../../Detections/Host/Windows/ST_Windows_Host_Detections.md)
+- [ST Windows Host Detections](../../../Detections/Host/Windows/ST_Windows_Host_Detections.md)
+- [ST Process Monitoring](../../../Detections/Host/Windows/ST_Windows_Host_Detections.md)
 
 ### Threat Intelligence
-- [ST Threat Intelligence](../../Threat_Intelligence/Actors/Shotgun_Tiger.md)
-- [ST Actor Profile](../../Threat_Intelligence/Actors/Shotgun_Tiger.md)
+- [ST Threat Intelligence](../../../Threat_Intelligence/Actors/Shotgun_Tiger.md)
+- [ST Actor Profile](../../../Threat_Intelligence/Actors/Shotgun_Tiger.md)
 
 ## Hunting Playbook Snippets
 
@@ -117,10 +117,10 @@ DeviceNetworkEvents
 
 ## Related Documentation
 
-- [ST Suricata Rules](../../Detections/Network/ST_Suricata_Rules.md)
-- [ST Windows Host Detections](../../Detections/Host/Windows/ST_Windows_Host_Detections.md)
-- [ST Threat Intelligence](../../Threat_Intelligence/Actors/Shotgun_Tiger.md)
-- [ST Generic Reference](../../Reference/ST_Generic_Reference.md)
+- [ST Suricata Rules](../../../Detections/Network/ST_Suricata_Rules.md)
+- [ST Windows Host Detections](../../../Detections/Host/Windows/ST_Windows_Host_Detections.md)
+- [ST Threat Intelligence](../../../Threat_Intelligence/Actors/Shotgun_Tiger.md)
+- [ST Generic Reference](../../../Reference/SS_Generic_Reference.md)
 
 ## References
 

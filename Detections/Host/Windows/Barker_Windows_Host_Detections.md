@@ -189,7 +189,7 @@ auditpol /set /category:"Process Tracking" /success:enable /failure:enable
 
 ## Related Documentation
 
-- [Barker Suricata Rules](../Network/Barker_Suricata_Rules.md)
+- [Barker Suricata Rules](../Network/BT_Suricata_Rules.md)
 - [Barker Hunt Report](../../Hunt_Playbooks/Active-Mission/Bazooka_Tiger/Hunt_Report.md)
 - [Barker Generic Reference](../../Reference/Barker_Generic_Reference.md)
 

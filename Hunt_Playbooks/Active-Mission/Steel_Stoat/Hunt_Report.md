@@ -38,16 +38,16 @@ Steel Stoat has been observed conducting sophisticated cyber operations targetin
 ## Related Detections
 
 ### Network Detections
-- [SS Suricata Rules](../../Detections/Network/SS_Suricata_Rules.md)
-- [SS Network Anomaly Detection](../../Detections/Network/SS_Suricata_Rules.md)
+- [SS Suricata Rules](../../../Detections/Network/SS_Suricata_Rules.md)
+- [SS Network Anomaly Detection](../../../Detections/Network/SS_Suricata_Rules.md)
 
 ### Host Detections
-- [SS Windows Host Detections](../../Detections/Host/Windows/SS_Windows_Host_Detections.md)
-- [SS Process Monitoring](../../Detections/Host/Windows/SS_Windows_Host_Detections.md)
+- [SS Windows Host Detections](../../../Detections/Host/Windows/SS_Windows_Host_Detections.md)
+- [SS Process Monitoring](../../../Detections/Host/Windows/SS_Windows_Host_Detections.md)
 
 ### Threat Intelligence
-- [SS Threat Intelligence](../../Threat_Intelligence/Actors/Steel_Stoat.md)
-- [SS Actor Profile](../../Threat_Intelligence/Actors/Steel_Stoat.md)
+- [SS Threat Intelligence](../../../Threat_Intelligence/Actors/Steel_Stoat.md)
+- [SS Actor Profile](../../../Threat_Intelligence/Actors/Steel_Stoat.md)
 
 ## Hunting Playbook Snippets
 
@@ -121,10 +121,10 @@ DeviceNetworkEvents
 
 ## Related Documentation
 
-- [SS Suricata Rules](../../Detections/Network/SS_Suricata_Rules.md)
-- [SS Windows Host Detections](../../Detections/Host/Windows/SS_Windows_Host_Detections.md)
-- [SS Threat Intelligence](../../Threat_Intelligence/Actors/Steel_Stoat.md)
-- [SS Generic Reference](../../Reference/SS_Generic_Reference.md)
+- [SS Suricata Rules](../../../Detections/Network/SS_Suricata_Rules.md)
+- [SS Windows Host Detections](../../../Detections/Host/Windows/SS_Windows_Host_Detections.md)
+- [SS Threat Intelligence](../../../Threat_Intelligence/Actors/Steel_Stoat.md)
+- [SS Generic Reference](../../../Reference/SS_Generic_Reference.md)
 
 ## References
 

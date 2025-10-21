@@ -133,6 +133,6 @@ threshold gen_id 1, sig_id 2025101008, type both, track by_src, count 100, secon
 
 ## Related Documentation
 
-- [BT Windows Host Detections](../Host/Windows/BT_Windows_Host_Detections.md)
+- [BT Windows Host Detections](../Host/Windows/Barker_Windows_Host_Detections.md)
 - [BT Hunt Report](../../Hunt_Playbooks/Active-Mission/Bazooka_Tiger/Hunt_Report.md)
 - [BT Generic Reference](../../Reference/BT_Generic_Reference.md)

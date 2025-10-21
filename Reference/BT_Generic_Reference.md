@@ -153,7 +153,7 @@ DeviceNetworkEvents
 ## Related Documentation
 
 - [BT Suricata Rules](../Detections/Network/BT_Suricata_Rules.md)
-- [BT Windows Host Detections](../Detections/Host/Windows/BT_Windows_Host_Detections.md)
+- [BT Windows Host Detections](../Detections/Host/Windows/Barker_Windows_Host_Detections.md)
 - [BT Hunt Report](../Hunt_Playbooks/Active-Mission/Bazooka_Tiger/Hunt_Report.md)
 
 ## References

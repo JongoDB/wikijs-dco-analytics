@@ -152,7 +152,7 @@ DeviceNetworkEvents
 
 ## Related Documentation
 
-- [Barker Suricata Rules](../Detections/Network/Barker_Suricata_Rules.md)
+- [Barker Suricata Rules](../Detections/Network/BT_Suricata_Rules.md)
 - [Barker Windows Host Detections](../Detections/Host/Windows/Barker_Windows_Host_Detections.md)
 - [Barker Hunt Report](../Hunt_Playbooks/Active-Mission/Bazooka_Tiger/Hunt_Report.md)
 
