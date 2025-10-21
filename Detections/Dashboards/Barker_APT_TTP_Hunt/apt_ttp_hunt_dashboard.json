@@ -1,0 +1,158 @@
+{
+  "title": "Barker APT TTP Hunt Dashboard",
+  "description": "Splunk Dashboard Studio visualization for APT and TTP hunting. Incorporates host and network telemetry for cross-surface correlation.",
+  "version": "1.0.0",
+  "created": "2025-01-20",
+  "last_updated": "2025-01-20",
+  "author": "DCO Analytics Team",
+  "inputs": {
+    "global_time": {
+      "type": "timepicker",
+      "default": "-24h@h",
+      "label": "Time Range"
+    },
+    "win_idx": {
+      "type": "string",
+      "default": "wineventlog*",
+      "label": "Windows Event Log Index"
+    },
+    "net_idx": {
+      "type": "string",
+      "default": "suricata*",
+      "label": "Network Log Index"
+    },
+    "host_filter": {
+      "type": "text",
+      "default": "*",
+      "label": "Host Filter"
+    }
+  },
+  "dataSources": {
+    "impacket_service_exec": {
+      "query": "index=$win_idx$ EventCode IN (7045,4697) | eval category=\"Impacket-like Service Exec\" | stats count by host, user, Image, CommandLine",
+      "description": "Detects service execution patterns consistent with Impacket tools"
+    },
+    "powershell_encoded": {
+      "query": "index=$win_idx$ sourcetype=XmlWinEventLog:Microsoft-Windows-PowerShell* EncodedCommand=* | eval category=\"PowerShell EncodedCommand\" | stats count by host, user, CommandLine",
+      "description": "Identifies PowerShell encoded command execution"
+    },
+    "shadow_copy_delete": {
+      "query": "index=$win_idx$ (\"vssadmin delete shadows\" OR \"wmic shadowcopy delete\") | eval category=\"Shadow Copy Deletion\" | stats count by host, user",
+      "description": "Detects shadow copy deletion attempts"
+    },
+    "tomcat_upload": {
+      "query": "index=$net_idx$ \"POST /manager/html/upload\" OR \"PUT /manager/html\" | eval category=\"Tomcat Manager Upload\" | stats count by src_ip, dest_ip, url",
+      "description": "Identifies suspicious Tomcat manager uploads"
+    },
+    "ghostr_rat": {
+      "query": "index=$net_idx$ \"Gh0st\" OR \"heartbeat\" OR \"magic_packet\" | eval category=\"Gh0st RAT C2 Traffic\" | stats count by src_ip, dest_ip, signature",
+      "description": "Detects Gh0st RAT command and control traffic"
+    },
+    "suspicious_network_connections": {
+      "query": "index=$net_idx$ | stats count by src_ip, dest_ip, dest_port | where count > 100 | eval category=\"Suspicious Network Connections\"",
+      "description": "Identifies high-volume network connections"
+    },
+    "credential_dumping": {
+      "query": "index=$win_idx$ (EventCode=4656 OR EventCode=4663) (ObjectName=\"*SAM*\" OR ObjectName=\"*LSASS*\" OR ProcessName=\"*mimikatz*\" OR ProcessName=\"*procdump*\") | eval category=\"Credential Dumping\" | stats count by host, user, ObjectName, ProcessName",
+      "description": "Detects potential credential dumping activities"
+    },
+    "lateral_movement": {
+      "query": "index=$win_idx$ (EventCode=4624 OR EventCode=4625) LogonType IN (2,3,10) | eval category=\"Lateral Movement\" | stats count by host, user, LogonType, SourceNetworkAddress",
+      "description": "Identifies potential lateral movement activities"
+    }
+  },
+  "visualizations": {
+    "overview": {
+      "type": "grid",
+      "title": "APT TTP Hunt Overview",
+      "panels": [
+        {
+          "title": "Impacket Service Exec",
+          "source": "impacket_service_exec",
+          "type": "table",
+          "width": "50%"
+        },
+        {
+          "title": "PowerShell EncodedCommand",
+          "source": "powershell_encoded",
+          "type": "table",
+          "width": "50%"
+        },
+        {
+          "title": "Shadow Copy Deletion",
+          "source": "shadow_copy_delete",
+          "type": "table",
+          "width": "50%"
+        },
+        {
+          "title": "Tomcat Manager Upload",
+          "source": "tomcat_upload",
+          "type": "table",
+          "width": "50%"
+        },
+        {
+          "title": "Gh0st RAT C2 Traffic",
+          "source": "ghostr_rat",
+          "type": "table",
+          "width": "50%"
+        },
+        {
+          "title": "Suspicious Network Connections",
+          "source": "suspicious_network_connections",
+          "type": "table",
+          "width": "50%"
+        }
+      ]
+    },
+    "credential_access": {
+      "type": "section",
+      "title": "Credential Access Techniques",
+      "panels": [
+        {
+          "title": "Credential Dumping Activities",
+          "source": "credential_dumping",
+          "type": "table",
+          "width": "100%"
+        }
+      ]
+    },
+    "lateral_movement": {
+      "type": "section",
+      "title": "Lateral Movement Detection",
+      "panels": [
+        {
+          "title": "Lateral Movement Activities",
+          "source": "lateral_movement",
+          "type": "table",
+          "width": "100%"
+        }
+      ]
+    }
+  },
+  "layout": {
+    "grid": {
+      "columns": 2,
+      "gap": "1rem"
+    },
+    "sections": [
+      {
+        "title": "Overview",
+        "panels": ["impacket_service_exec", "powershell_encoded", "shadow_copy_delete", "tomcat_upload", "ghostr_rat", "suspicious_network_connections"]
+      },
+      {
+        "title": "Credential Access",
+        "panels": ["credential_dumping"]
+      },
+      {
+        "title": "Lateral Movement",
+        "panels": ["lateral_movement"]
+      }
+    ]
+  },
+  "metadata": {
+    "tags": ["APT", "TTP", "Hunting", "Detection", "Splunk"],
+    "mitre_techniques": ["T1003", "T1021", "T1059", "T1071", "T1078", "T1083", "T1115"],
+    "threat_actors": ["Bazooka Tiger", "Shotgun Tiger", "Steel Stoat"],
+    "malware_families": ["SparrowDoor", "VersaMem", "SO-HOBOT-NT", "Impacket"]
+  }
+}
