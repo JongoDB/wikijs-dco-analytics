@@ -1,6 +1,5 @@
 # DCO Analytics Repository
 
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Wiki.js](https://img.shields.io/badge/Platform-Wiki.js-green.svg)](https://js.wiki/)
 [![Threat Intelligence](https://img.shields.io/badge/Type-Threat%20Intelligence-red.svg)](https://attack.mitre.org/)
 
@@ -10,44 +9,89 @@
 
 This repository serves as a centralized knowledge base for cybersecurity professionals, providing actionable intelligence and detection capabilities for sophisticated threat actors including **Bazooka Tiger**, **Shotgun Tiger**, and **Steel Stoat**. The repository is designed to be deployed with Wiki.js for interactive documentation and analytics.
 
-## 🏗️ Repository Structure
+## 🏗️ Complete Repository Structure
 
 ```
 wikijs-dco-analytics/
-├── 📁 Detections/                    # Detection rules and dashboards
-│   ├── 📁 Dashboards/               # Splunk dashboards for APT hunting
-│   ├── 📁 Host/                     # Host-based detection rules
-│   └── 📁 Network/                 # Network detection rules (Suricata)
-├── 📁 Hunt_Playbooks/              # Active threat hunting methodologies
-│   └── 📁 Active-Mission/          # Current hunting operations
+├── 📁 Artifacts/                    # Security tool artifacts and configurations
+│   ├── 📁 Elastic Kibana/          # Kibana dashboards and queries
+│   │   ├── 📁 Dashboards/          # Dashboard configurations
+│   │   └── 📁 Queries/             # Elasticsearch queries
+│   ├── 📁 Splunk/                  # Splunk dashboards and queries
+│   │   ├── 📁 Dashboards/          # Dashboard configurations
+│   │   └── 📁 Queries/             # SPL queries
+│   ├── 📁 Suricata/                # Suricata rules and configurations
+│   ├── 📁 Sysmon/                  # Sysmon configurations and rules
+│   ├── 📁 YARA/                    # YARA rules for malware detection
+│   └── 📁 Zeek/                    # Zeek scripts and configurations
+├── 📁 Detections/                  # Detection rules and dashboards
+│   ├── 📁 Dashboards/              # Splunk dashboards for APT hunting
+│   ├── 📁 Host/                    # Host-based detection rules
+│   │   └── 📁 Windows/             # Windows host detection rules
+│   ├── 📁 Network/                 # Network detection rules (Suricata)
+│   └── 📁 TA0001-TA0011/           # MITRE ATT&CK technique-based detections
+├── 📁 Hunt_Playbooks/              # Threat hunting methodologies
+│   ├── 📁 Active-Mission/          # Current hunting operations
+│   ├── 📁 Pre-Mission/             # Pre-mission planning materials
+│   └── 📁 Post-Mission/            # Post-mission analysis and reporting
+├── 📁 IOCs/                        # Indicators of Compromise
 ├── 📁 Malware_Tools/               # Malware analysis and tools
 │   ├── 📁 Malware/                 # Malware family analysis
 │   └── 📁 Tools/                   # Attack tool analysis
 ├── 📁 Reference/                   # Reference materials and mappings
 │   └── 📁 MITRE_Mappings/          # MITRE ATT&CK technique mappings
-├── 📁 Threat_Intelligence/         # Threat actor profiles
-│   └── 📁 Actors/                  # APT group profiles
+├── 📁 Repository_Data/             # Supporting datasets and materials
+│   ├── 📁 datasets/                # Training and testing datasets
+│   ├── 📁 images/                  # Screenshots and visual materials
+│   ├── 📁 misc/                    # Miscellaneous supporting files
+│   ├── 📁 pcaps/                   # Network packet captures
+│   ├── 📁 pdfs/                    # PDF documents and reports
+│   ├── 📁 suricata/                # Suricata rule files
+│   └── 📁 yara/                    # YARA rule files
+├── 📁 Threat_Intelligence/         # Threat actor profiles and intelligence
+│   ├── 📁 Actors/                  # APT group profiles
+│   ├── 📁 Campaigns/                # Campaign intelligence
+│   └── 📁 Clusters/                # Threat cluster intelligence
+├── 📁 Validation/                  # Validation materials and testing
+│   ├── 📁 Datasets/                # Validation datasets
+│   ├── 📁 Sample Data/             # Sample data for testing
+│   └── 📁 Unit Tests/              # Unit tests for components
 └── 📁 home/                        # Wiki.js homepage content
     └── index.md                    # Main homepage for Wiki.js instance
 ```
 
-## 🚀 Quick Start
+## 🚀 Wiki.js Deployment
 
-### For Wiki.js Deployment
-1. **Clone this repository** to your Wiki.js instance
-2. **Configure Git Sync** in Wiki.js to pull from this repository
-3. **Access the homepage** at `/home/index.md` for the main navigation
-4. **Deploy detection rules** from the appropriate folders
+### Deployment Options
+
+#### Option 1: Git Sync (Recommended for Collaborative Editing)
+1. **Install Wiki.js** on your server
+2. **Configure Git Sync** in Wiki.js settings:
+   - Set repository URL to this GitHub repository
+   - Enable bidirectional sync for collaborative editing
+   - Configure authentication if needed
+3. **Set Homepage**: Copy `home/index.md` to project root and rename to `home.html`
+4. **Configure Database**: Enable PostgreSQL for enhanced search capabilities
+5. **Deploy Detection Rules** from the appropriate folders
+
+#### Option 2: Local File System Hosting
+1. **Install Wiki.js** on your server
+2. **Clone Repository** to your local file system
+3. **Configure Wiki.js** to use local file system storage
+4. **Set Homepage**: Copy `home/index.md` to project root and rename to `home.html`
+5. **Configure Database**: Enable PostgreSQL for enhanced search capabilities
 
 ### For Analysts
 1. **Start with Hunt Playbooks** - Review active mission reports
 2. **Deploy Detection Rules** - Import Suricata rules and Splunk dashboards  
 3. **Use Reference Materials** - Consult MITRE mappings and actor profiles
+4. **Monitor Dashboards** - Set up real-time monitoring with provided dashboards
 
-### For Hunters
-1. **Review Threat Actor Profiles** - Understand TTPs and capabilities
-2. **Deploy Hunting Queries** - Use provided Splunk and KQL queries
-3. **Monitor Dashboards** - Set up real-time monitoring
+### For Administrators
+1. **Configure Wiki.js** - Set up proper authentication and permissions
+2. **Deploy Detection Rules** - Import rules into security tools
+3. **Set Up Monitoring** - Configure alerts and dashboards
+4. **Manage Content** - Update and maintain repository content
 
 ## 📊 Key Features
 
@@ -128,19 +172,5 @@ This repository is designed to be a living document that evolves with the threat
 - Additional detection rules
 - Enhanced hunting methodologies
 - Updated IOCs and TTPs
-
-## 📞 Support
-
-For questions, issues, or contributions, please refer to the documentation in each section or contact the DCO Analytics Team.
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-**Last Updated**: January 20, 2025  
-**Version**: 1.0.0  
-**Maintainer**: DCO Analytics Team
 
 > **Security Notice**: This repository contains sensitive threat intelligence. Please ensure proper handling and distribution controls are in place before sharing.

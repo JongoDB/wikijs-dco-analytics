@@ -48,15 +48,13 @@ Comprehensive reference documentation:
 2. **Deploy Detection Rules** - Import Suricata rules and Splunk dashboards
 3. **Use Reference Materials** - Consult MITRE mappings and actor profiles
 
-### For Hunters
+### For Administrators
 1. **Review Threat Actor Profiles** - Understand TTPs and capabilities
 2. **Deploy Hunting Queries** - Use provided Splunk and KQL queries
 3. **Monitor Dashboards** - Set up real-time monitoring with provided dashboards
-
-### For Defenders
-1. **Implement Detection Rules** - Deploy network and host detection rules
-2. **Review Mitigation Strategies** - Apply recommended security controls
-3. **Monitor IOCs** - Track indicators of compromise
+4. **Implement Detection Rules** - Deploy network and host detection rules
+5. **Review Mitigation Strategies** - Apply recommended security controls
+6. **Monitor IOCs** - Track indicators of compromise
 
 ## 🔍 Key Features
 
@@ -130,15 +128,5 @@ This repository is designed to be a living document that evolves with the threat
 - Additional detection rules
 - Enhanced hunting methodologies
 - Updated IOCs and TTPs
-
-## 📞 Support
-
-For questions, issues, or contributions, please refer to the documentation in each section or contact the DCO Analytics Team.
-
----
-
-**Last Updated**: January 20, 2025  
-**Version**: 1.0.0  
-**Maintainer**: DCO Analytics Team
 
 > **Note**: This repository contains sensitive threat intelligence. Please ensure proper handling and distribution controls are in place before sharing.

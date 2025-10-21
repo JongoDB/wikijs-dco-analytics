@@ -11,7 +11,7 @@ This directory contains post-mission analysis and reporting materials for threat
 
 ## Usage
 
-Post-mission materials help hunters:
+Post-mission materials help analysts:
 - **Analyze findings** - Review and document discoveries
 - **Create reports** - Generate mission reports
 - **Share intelligence** - Disseminate findings to teams

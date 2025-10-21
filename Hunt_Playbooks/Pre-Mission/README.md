@@ -11,7 +11,7 @@ This directory contains pre-mission planning and preparation materials for threa
 
 ## Usage
 
-Pre-mission materials help hunters:
+Pre-mission materials help analysts:
 - **Plan hunting operations** - Define objectives and scope
 - **Prepare tools and data** - Set up hunting environment
 - **Review threat intelligence** - Understand target threats

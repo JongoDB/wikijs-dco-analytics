@@ -102,6 +102,3 @@ security*
 - [References](references.md)
 - [APT TTP Hunt Dashboard JSON](../apt_ttp_hunt_dashboard.json)
 
-## Support
-
-For questions or issues with the dashboard, please contact the DCO Analytics Team or refer to the Splunk Dashboard Studio documentation.
