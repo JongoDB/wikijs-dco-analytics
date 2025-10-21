@@ -29,3 +29,4 @@ When adding new artifacts:
 2. Include proper documentation
 3. Follow SPL best practices
 4. Provide usage examples and context
+

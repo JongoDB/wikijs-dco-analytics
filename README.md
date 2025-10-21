@@ -56,30 +56,63 @@ wikijs-dco-analytics/
 │   ├── 📁 Datasets/                # Validation datasets
 │   ├── 📁 Sample Data/             # Sample data for testing
 │   └── 📁 Unit Tests/              # Unit tests for components
-└── 📁 home/                        # Wiki.js homepage content
-    └── index.md                    # Main homepage for Wiki.js instance
+├── 📁 home/                        # Wiki.js homepage content
+│   └── index.md                    # Homepage template for Wiki.js instance
+└── docker-compose.yml              # Docker deployment configuration
 ```
 
 ## 🚀 Wiki.js Deployment
 
 ### Deployment Options
 
+#### Option 0: Docker Deployment (Recommended for Quick Setup)
+1. **Prerequisites**: Install Docker and Docker Compose on your system
+2. **Clone Repository**: Clone this repository to your local system
+3. **Configure Permissions**: Ensure the data directory has proper ownership:
+   ```bash
+   # Create data directory and set proper ownership
+   sudo mkdir -p /home/test/prod/data
+   sudo chown -R 1000:1000 /home/test/prod/data
+   ```
+4. **Deploy with Docker Compose**: 
+   ```bash
+   docker-compose up -d
+   ```
+5. **Access Wiki.js**: Navigate to `http://localhost` in your browser
+6. **Set Homepage**: When creating the homepage, choose "Choose from template" and navigate to `home/` to select `index.md` as the homepage template
+7. **Configure Git Sync**: Set up Git Sync to point to this repository for content synchronization
+
+> **Important**: The `/data` folder created by Docker may be owned by `root:root`. You'll need to change ownership to the user managing the Wiki.js instance (typically UID 1000) to avoid permission issues when Wiki.js tries to create necessary directories.
+
+### Docker Compose Configuration
+
+The included `docker-compose.yml` file provides a complete Wiki.js deployment with:
+
+- **PostgreSQL Database**: Pre-configured PostgreSQL 16 instance with health checks
+- **Wiki.js Application**: Latest Wiki.js v2 with proper database connectivity
+- **Volume Management**: Persistent data storage for both database and Wiki.js
+- **User Permissions**: Configured to run as UID 1000 to avoid permission issues
+- **Timezone Support**: Configured for America/New_York timezone
+- **Port Mapping**: Wiki.js accessible on port 80 (localhost)
+
+The configuration includes proper health checks to ensure the database is ready before Wiki.js starts, and all necessary environment variables for seamless connectivity.
+
 #### Option 1: Git Sync (Recommended for Collaborative Editing)
 1. **Install Wiki.js** on your server
-2. **Configure Git Sync** in Wiki.js settings:
+2. **Configure Database**: Set up PostgreSQL database for enhanced search capabilities
+3. **Configure Git Sync** in Wiki.js settings:
    - Set repository URL to this GitHub repository
    - Enable bidirectional sync for collaborative editing
    - Configure authentication if needed
-3. **Set Homepage**: Copy `home/index.md` to project root and rename to `home.html`
-4. **Configure Database**: Enable PostgreSQL for enhanced search capabilities
-5. **Deploy Detection Rules** from the appropriate folders
+4. **Set Homepage**: When creating the homepage in Wiki.js, choose "Choose from template" and navigate to `home/` to select `index.md` as the homepage template
+5. **Configure Storage**: Set up local file system storage for Wiki.js data
 
 #### Option 2: Local File System Hosting
 1. **Install Wiki.js** on your server
-2. **Clone Repository** to your local file system
-3. **Configure Wiki.js** to use local file system storage
-4. **Set Homepage**: Copy `home/index.md` to project root and rename to `home.html`
-5. **Configure Database**: Enable PostgreSQL for enhanced search capabilities
+2. **Configure Database**: Set up PostgreSQL database for enhanced search capabilities
+3. **Clone Repository** to your local file system
+4. **Configure Wiki.js** to use local file system storage
+5. **Set Homepage**: When creating the homepage in Wiki.js, choose "Choose from template" and navigate to `home/` to select `index.md` as the homepage template
 
 ### For Analysts
 1. **Start with Hunt Playbooks** - Review active mission reports
@@ -89,9 +122,9 @@ wikijs-dco-analytics/
 
 ### For Administrators
 1. **Configure Wiki.js** - Set up proper authentication and permissions
-2. **Deploy Detection Rules** - Import rules into security tools
-3. **Set Up Monitoring** - Configure alerts and dashboards
-4. **Manage Content** - Update and maintain repository content
+2. **Manage Configuration** - Handle content synchronization and system configuration
+3. **Account Management** - Manage user accounts and access controls
+4. **Content Management** - Update and maintain repository content
 
 ## 📊 Key Features
 
@@ -157,12 +190,12 @@ wikijs-dco-analytics/
 
 ## 🔧 Wiki.js Integration
 
-> **Note**: The `home/index.md` file serves as the homepage for the Wiki.js instance. This repository is designed to be deployed with Wiki.js using Git Sync functionality, allowing for real-time updates and collaborative editing.
+> **Note**: The `home/index.md` file serves as the homepage template for the Wiki.js instance. This repository is designed to be deployed with Wiki.js using Git Sync functionality, allowing for real-time updates and collaborative editing.
 
 ### Setup Instructions
 1. **Install Wiki.js** on your server
 2. **Configure Git Sync** to point to this repository
-3. **Set Homepage** to `/home/index.md`
+3. **Set Homepage**: When creating the homepage, choose "Choose from template" and navigate to `home/` to select `index.md` as the homepage template
 4. **Enable Auto-sync** for real-time updates
 
 ## 🤝 Contributing

@@ -30,3 +30,4 @@ When adding new artifacts:
 2. Include rule documentation
 3. Follow YARA syntax standards
 4. Provide false positive considerations
+

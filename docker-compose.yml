@@ -1,0 +1,45 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:16
+    container_name: wikijs-db
+    environment:
+      POSTGRES_DB: wiki
+      POSTGRES_USER: wikijs
+      POSTGRES_PASSWORD: wikijs
+      TZ: America/New_York
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  wiki:
+    image: requarks/wiki:2
+    container_name: wikijs
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_TYPE: postgres
+      DB_HOST: db
+      DB_PORT: "5432"
+      DB_USER: wikijs
+      DB_PASS: wikijs
+      DB_NAME: wiki
+      TZ: America/New_York
+    ports:
+      - "80:3000"
+    # Run as the same user as your host's "test" (usually uid 1000)
+    user: "1000:1000"
+    # Mount your host directory into a path INSIDE the container
+    volumes:
+      - /home/test/prod/data:/wiki/data:rw
+    restart: unless-stopped
+
+volumes:
+  db-data:

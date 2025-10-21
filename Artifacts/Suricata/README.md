@@ -29,3 +29,4 @@ When adding new artifacts:
 2. Include rule documentation
 3. Follow Suricata rule syntax
 4. Provide performance considerations
+

@@ -37,3 +37,4 @@ When adding new detection rules:
 2. Include rule documentation
 3. Provide false positive guidance
 4. Update technique mappings
+

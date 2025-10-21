@@ -16,3 +16,4 @@ When adding new dashboards:
 2. Test dashboards with sample data
 3. Provide configuration instructions
 4. Update this README with new additions
+

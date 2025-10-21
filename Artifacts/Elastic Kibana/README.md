@@ -28,3 +28,4 @@ When adding new artifacts:
 2. Test queries before submission
 3. Follow established naming conventions
 4. Provide usage examples
+

@@ -23,3 +23,4 @@ When adding new IOCs:
 2. Provide context and campaign information
 3. Verify accuracy before submission
 4. Follow established naming conventions
+

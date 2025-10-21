@@ -2,6 +2,7 @@
 title: DCO Analytics Repository
 type: homepage
 last_reviewed: 2025-01-20
+description: Homepage template for DCO Analytics Wiki.js instance
 ---
 
 # DCO Analytics Repository
