@@ -5,41 +5,39 @@ services:
     image: postgres:16
     container_name: wikijs-db
     environment:
-      POSTGRES_DB: ${POSTGRES_DB:-wiki}
-      POSTGRES_USER: ${POSTGRES_USER:-wikijs}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-wikijs}
-      TZ: ${TZ:-America/New_York}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      TZ: ${TZ}
     volumes:
       - db-data:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
       interval: 10s
       timeout: 5s
-      retries: 5
+      retries: 10
     restart: unless-stopped
 
   wiki:
-    image: requarks/wiki:2
+    image: ghcr.io/requarks/wiki:2
     container_name: wikijs
     depends_on:
       db:
         condition: service_healthy
     environment:
       DB_TYPE: postgres
-      DB_HOST: db
-      DB_PORT: "5432"
-      DB_USER: ${POSTGRES_USER:-wikijs}
-      DB_PASS: ${POSTGRES_PASSWORD:-wikijs}
-      DB_NAME: ${POSTGRES_DB:-wiki}
-      TZ: ${TZ:-America/New_York}
+      DB_HOST: ${WIKI_DB_HOST}
+      DB_PORT: "${WIKI_DB_PORT}"
+      DB_USER: ${WIKI_DB_USER}
+      DB_PASS: ${WIKI_DB_PASS}
+      DB_NAME: ${WIKI_DB_NAME}
+      TZ: ${TZ}
     ports:
-      - "${WIKI_PORT:-80}:3000"
-    # Run as the same user as your host user (configurable via USER_ID and GROUP_ID)
-    user: "${USER_ID:-1000}:${GROUP_ID:-1000}"
-    # Mount your host directory into a path INSIDE the container
+      - "${PUBLIC_PORT}:3000"
     volumes:
-      - ${WIKI_DATA_PATH:-./wiki-data}:/wiki/data:rw
+      - wiki-data:/wiki/data
     restart: unless-stopped
 
 volumes:
   db-data:
+  wiki-data:
