@@ -63,11 +63,11 @@ wikijs-dco-analytics/
 
 ## 🚀 Wiki.js Deployment
 
-### Deployment Options
-
-#### Option 0: Docker Deployment (Recommended for Quick Setup)
 1. **Prerequisites**: Install Docker and Docker Compose on your system
 2. **Clone Repository**: Clone this repository to your local system
+   ```bash
+   git clone https://github.com/JongoDB/wikijs-dco-analytics.git
+   ```
 3. **Configure Environment**: Create a `.env` file in the repository root with your custom settings:
    ```bash
    # Copy the template and customize
@@ -77,7 +77,7 @@ wikijs-dco-analytics/
    ```
    
    The template includes all available configuration options with sensible defaults.
-4. **Configure Data Directory**: Create and configure the data directory:
+4. **Configure Data Directory (Optional)**: Create and configure the data directory:
    ```bash
    # Create data directory and set proper ownership
    mkdir -p ./wiki-data
@@ -116,11 +116,13 @@ The Docker Compose setup supports the following environment variables:
 | `POSTGRES_DB` | `wiki` | PostgreSQL database name |
 | `POSTGRES_USER` | `wikijs` | PostgreSQL username |
 | `POSTGRES_PASSWORD` | `wikijs` | PostgreSQL password |
-| `WIKI_PORT` | `80` | Port for Wiki.js web interface |
+| `PUBLIC_PORT` | `80` | Port for Wiki.js web interface |
 | `WIKI_DATA_PATH` | `./wiki-data` | Local path for Wiki.js data |
 | `USER_ID` | `1000` | User ID for container permissions |
 | `GROUP_ID` | `1000` | Group ID for container permissions |
 | `TZ` | `America/New_York` | Timezone configuration |
+
+### Storage Configuration
 
 #### Option 1: Git Sync (Recommended for Collaborative Editing)
 1. **Install Wiki.js** on your server
