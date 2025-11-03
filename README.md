@@ -1,4 +1,4 @@
-# DCO Analytics Repository (Test Sync - Sync Successful)
+# DCO Analytics Repository
 
 [![Wiki.js](https://img.shields.io/badge/Platform-Wiki.js-green.svg)](https://js.wiki/)
 [![Threat Intelligence](https://img.shields.io/badge/Type-Threat%20Intelligence-red.svg)](https://attack.mitre.org/)
