@@ -80,6 +80,9 @@ wikijs-dco-analytics/
    The template includes all available configuration options with sensible defaults.
 
    > **Tip**: If you intend to use Git instead of local file system for storage, you can remove all files under wikijs-dco-analytics/ except docker-compose.yml and .env since the container will handle Git repo cache and sync operations.
+   > ```bash
+   > find . -mindepth 1 ! -name 'docker-compose.yml' ! -name '.env' -exec rm -rf {} +
+   > ```
    
 5. **Configure Data Directory (Optional)**: Create and configure the data directory for container access to local directory:
    ```bash
