@@ -68,6 +68,7 @@ wikijs-dco-analytics/
    ```bash
    git clone https://github.com/JongoDB/wikijs-dco-analytics.git
    ```
+      
 3. **Configure Environment**: Create a `.env` file in the repository root with your custom settings:
    ```bash
    # Copy the template and customize
@@ -77,20 +78,23 @@ wikijs-dco-analytics/
    ```
    
    The template includes all available configuration options with sensible defaults.
-4. **Configure Data Directory (Optional)**: Create and configure the data directory:
+
+   > **Tip**: If you intend to use Git instead of local file system for storage, you can remove all files under wikijs-dco-analytics/ except docker-compose.yml and .env since the container will handle Git repo cache and sync operations.
+   
+5. **Configure Data Directory (Optional)**: Create and configure the data directory for container access to local directory:
    ```bash
    # Create data directory and set proper ownership
    mkdir -p ./wiki-data
    # Set ownership to match your user (replace 1000:1000 with your UID:GID)
    sudo chown -R $(id -u):$(id -g) ./wiki-data
    ```
-5. **Deploy with Docker Compose**: 
+6. **Deploy with Docker Compose**: 
    ```bash
    docker-compose up -d
    ```
-6. **Access Wiki.js**: Navigate to `http://localhost` (or your configured port) in your browser
-7. **Set Homepage**: When creating the homepage, choose "Choose from template" and navigate to `home/` to select `index.md` as the homepage template
-8. **Configure Git Sync**: Set up Git Sync to point to this repository for content synchronization
+7. **Access Wiki.js**: Navigate to `http://localhost` (or your configured port) in your browser
+8. **Set Homepage**: When creating the homepage, choose "Choose from template" and navigate to `home/` to select `index.md` as the homepage template
+9. **Configure Git Sync**: Set up Git Sync to point to this repository for content synchronization
 
 > **Important**: The data folder created by Docker may have permission issues. You'll need to ensure the ownership matches your user configuration (USER_ID:GROUP_ID) to avoid permission issues when Wiki.js tries to create necessary directories.
 
